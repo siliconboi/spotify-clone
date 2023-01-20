@@ -1,8 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
-import { url } from "inspector";
-import { userAgent } from "next/server";
 import { artistsData } from "./songsData";
 
 const prisma = new PrismaClient();

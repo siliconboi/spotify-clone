@@ -2,15 +2,14 @@ import jwt from "jsonwebtoken";
 import { NextApiRequest, NextApiResponse } from "next";
 import prisma from "./prisma";
 
-export const validateToken = (handler) => {
+export const validateRoute = (handler) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const token = req.cookies.NAPSTIFY_ACCESS_TOKEN;
-
     if (token) {
       let user;
 
       try {
-        const { id } = jwt.verify("NAPSTIFY_ACCESS_TOKEN", "hello");
+        const { id } = jwt.verify(token, "hello");
         user = await prisma.user.findUnique({
           where: { id },
         });

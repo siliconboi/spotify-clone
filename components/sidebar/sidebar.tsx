@@ -3,15 +3,16 @@ import {
   Box,
   List,
   ListItem,
-  ListIcon,
   Divider,
-  Center,
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/layout";
+import NextLink from "next/link";
 import NavMenu from "./navMenu";
+import { usePlaylists } from "../../lib/hooks";
 
 const Sidebar = () => {
+  const { playlists, isLoading } = usePlaylists();
   return (
     <Box
       width="100%"
@@ -35,16 +36,30 @@ const Sidebar = () => {
               width: "10px",
             },
             "::-webkit-scrollbar-track": {
-              opacity: "0",
+              opacity: "1",
             },
             "::-webkit-scrollbar-thumb": {
-              color: "white",
+              bgColor: "gray.200",
+              borderRadius: "15pt"
             },
           }}
         >
-          {new Array(50).fill(1).map(() => (
-            <h1>hi</h1>
-          ))}
+          <List spacing={2}>
+            {!isLoading ? (
+              playlists.map((playlist) => (
+                <ListItem paddingX="20px" key={playlist.id}>
+                  <LinkBox>
+                    <NextLink href="/" passHref>
+                      <LinkOverlay>{playlist.name}</LinkOverlay>
+                    </NextLink>
+                  </LinkBox>
+                </ListItem>
+              ))
+            ) : (
+              // eslint-disable-next-line jsx-a11y/heading-has-content
+              <h1 />
+            )}
+          </List>
         </Box>
       </Box>
     </Box>

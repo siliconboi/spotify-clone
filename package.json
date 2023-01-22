@@ -28,7 +28,8 @@
     "react-howler": "^5.2.0",
     "react-icons": "^4.3.1",
     "reset-css": "^5.0.1",
-    "swr": "^1.1.1"
+    "swr": "^1.1.1",
+    "use-image-color": "^0.0.9"
   },
   "devDependencies": {
     "@types/node": "18.11.0",
@@ -52,5 +53,5 @@
   },
   "prisma": {
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
- }
+  }
 }

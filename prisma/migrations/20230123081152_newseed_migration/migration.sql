@@ -5,6 +5,9 @@ CREATE TABLE "User" (
     "updateAt" TIMESTAMP(3) NOT NULL,
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "firstName" TEXT NOT NULL,
+    "lastName" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -28,7 +31,7 @@ CREATE TABLE "Artist" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT NOT NULL,
-
+    "image" TEXT NOT NULL,
     CONSTRAINT "Artist_pkey" PRIMARY KEY ("id")
 );
 
@@ -38,6 +41,7 @@ CREATE TABLE "Playlist" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updateAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
     "userId" INTEGER NOT NULL,
 
     CONSTRAINT "Playlist_pkey" PRIMARY KEY ("id")

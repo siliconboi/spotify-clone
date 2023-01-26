@@ -1,5 +1,5 @@
-import { validateToken } from "../../lib/auth";
+import { validateRoute } from "../../lib/auth";
 
-export default validateToken((req, res, user) => {
+export default validateRoute((req, res, user) => {
   res.json(user);
 });

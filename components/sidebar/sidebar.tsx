@@ -40,26 +40,32 @@ const Sidebar = () => {
             },
             "::-webkit-scrollbar-thumb": {
               bgColor: "gray.200",
-              borderRadius: "15pt"
+              borderRadius: "15pt",
             },
           }}
         >
-          <List spacing={2}>
-            {!isLoading ? (
-              playlists.map((playlist) => (
+          {!isLoading ? (
+            <List spacing={2}>
+              {playlists.map((playlist) => (
                 <ListItem paddingX="20px" key={playlist.id}>
                   <LinkBox>
-                    <NextLink href="/" passHref>
+                    <NextLink
+                      href={{
+                        pathname: "/playlists/[id]",
+                        query: { id: playlist.id },
+                      }}
+                      passHref
+                    >
                       <LinkOverlay>{playlist.name}</LinkOverlay>
                     </NextLink>
                   </LinkBox>
                 </ListItem>
-              ))
-            ) : (
-              // eslint-disable-next-line jsx-a11y/heading-has-content
-              <h1 />
-            )}
-          </List>
+              ))}
+            </List>
+          ) : (
+            // eslint-disable-next-line jsx-a11y/heading-has-content
+            <h1 />
+          )}
         </Box>
       </Box>
     </Box>

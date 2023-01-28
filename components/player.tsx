@@ -38,7 +38,10 @@ const Player = ({ songs, activeSong }) => {
   const [duration, setDuration] = useState(0.0);
   const soundRef = useRef(null);
   const repeatRef = useRef(repeat);
-  const setActiveSong = useStoreActions((state) => state.changeActiveSong);
+  const setActiveSong = useStoreActions(
+    (actions: any) => actions.changeActiveSong
+  );
+
   const setPlayState = (value) => {
     setPlaying(value);
   };
@@ -204,7 +207,7 @@ const Player = ({ songs, activeSong }) => {
                 step={0.1}
                 min={0}
                 id="player-range"
-                max={duration ? duration.toFixed(2) : 0}
+                max={duration ? +duration.toFixed(2) : 0}
                 onChange={onSeek}
                 value={[seek]}
                 onChangeStart={() => setIsSeeking(true)}

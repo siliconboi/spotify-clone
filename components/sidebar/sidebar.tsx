@@ -46,7 +46,7 @@ const Sidebar = () => {
         >
           {!isLoading ? (
             <List spacing={2}>
-              {playlists.map((playlist) => (
+              {playlists?.map((playlist) => (
                 <ListItem paddingX="20px" key={playlist.id}>
                   <LinkBox>
                     <NextLink

@@ -6,6 +6,17 @@ import { useStoreActions } from "easy-peasy";
 import { formatDate, formatTime } from "../lib/formatters";
 
 const SongsTable = ({ songs }) => {
+  const playSongs = useStoreActions(
+    (actions: any) => actions.changeActiveSongs
+  );
+  const setActiveSong = useStoreActions(
+    (actions: any) => actions.changeActiveSong
+  );
+
+  const handlePlay = (activeSong?) => {
+    setActiveSong(activeSong || songs[0]);
+    playSongs(songs)
+  };
   return (
     <Box bg="transparent">
       <Box padding="10px" marginBottom="20px">
@@ -16,6 +27,7 @@ const SongsTable = ({ songs }) => {
           size="lg"
           isRound
           marginBottom="20px"
+          onClick={() => handlePlay()}
         />
         <Table variant="unstyled">
           <Thead borderBottom="1px solid" borderColor="rgba(255,255,255,0.5)">
@@ -29,7 +41,7 @@ const SongsTable = ({ songs }) => {
             </Tr>
           </Thead>
           <Tbody>
-            {songs.map((song, i) => (
+            {songs?.map((song, i) => (
               <Tr
                 sx={{
                   transition: "all .3s",
@@ -38,7 +50,8 @@ const SongsTable = ({ songs }) => {
                   },
                 }}
                 key={song.id}
-                cursor="cursor"
+                cursor="pointer"
+                onClick={() => handlePlay(song)}
               >
                 <Td>{i + 1}</Td>
                 <Td>{song.name}</Td>

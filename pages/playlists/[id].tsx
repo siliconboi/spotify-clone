@@ -12,7 +12,7 @@ const Playlist = ({ playlist }) => {
       description={`${playlist?.songs.length} songs`}
       image="https://picsum.photos/300/300 "
     >
-      <SongsTable songs={playlist.songs} />
+      <SongsTable songs={playlist?.songs} />
     </GradientLayout>
   );
 };
@@ -29,26 +29,31 @@ export const getServerSideProps = async ({ query, req }) => {
       },
     };
   }
-
-  const playlist = await prisma.playlist.findFirst({
-    where: {
-      id: +query.id,
-      userId: user.id,
-    },
-    include: {
-      songs: {
-        include: {
-          artist: {
-            select: {
-              id: true,
-              name: true,
+  let playlist;
+  try {
+    playlist = await prisma.playlist.findFirst({
+      where: {
+        id: +query.id,
+        userId: user.id,
+      },
+      include: {
+        songs: {
+          include: {
+            artist: {
+              select: {
+                id: true,
+                name: true,
+              },
             },
           },
         },
       },
-    },
-  });
-
+    });
+  } catch (e) {
+    return {
+      props: {}
+    }
+  }
   return {
     props: { playlist },
   };

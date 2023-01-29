@@ -24,27 +24,29 @@ const Home = ({ artists, playlistCount }) => {
         </Box>
         <Flex>
           {artists.map((artist) => (
-            <a href={`/artist/${artist.id}`}>
-              <Box
-                bgColor="rgb(48,48,48)"
-                padding="10px"
-                marginX="10px"
-                borderRadius="4px"
-                width="30%"
-              >
-                <Image
-                  src="https://placekitten.com/300/300"
-                  borderRadius="100%"
-                  marginBottom="10px"
-                />
-                <Text fontSize="l" fontWeight="bold">
-                  {artist.name}
-                </Text>
-                <Text fontSize="sm" color="gray" fontWeight="medium">
-                  Artist
-                </Text>
-              </Box>
-            </a>
+            <Box
+              bgColor="rgb(48,48,48)"
+              padding="10px"
+              marginX="10px"
+              borderRadius="4px"
+              width="30%"
+            >
+              <a href={`/artist/${artist.id}`}>
+                <Box>
+                  <Image
+                    src="https://placekitten.com/300/300"
+                    borderRadius="100%"
+                    marginBottom="10px"
+                  />
+                  <Text fontSize="l" fontWeight="bold">
+                    {artist.name}
+                  </Text>
+                  <Text fontSize="sm" color="gray" fontWeight="medium">
+                    Artist
+                  </Text>
+                </Box>
+              </a>
+            </Box>
           ))}
         </Flex>
       </Box>

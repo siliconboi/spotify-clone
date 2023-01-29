@@ -9,7 +9,7 @@ import {
 import { useStoreActions } from "easy-peasy";
 import { formatDate, formatTime } from "../lib/formatters";
 
-const SongsTable = ({ songs }) => {
+const ArtistTable = ({ songs }) => {
   const playSongs = useStoreActions(
     (actions: any) => actions.changeActiveSongs
   );
@@ -78,4 +78,4 @@ const SongsTable = ({ songs }) => {
   );
 };
 
-export default SongsTable;
+export default ArtistTable;

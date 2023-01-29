@@ -19,6 +19,7 @@ CREATE TABLE "Song" (
     "updateAt" TIMESTAMP(3) NOT NULL,
     "name" TEXT NOT NULL,
     "artistId" INTEGER NOT NULL,
+    "isLiked" BOOLEAN NOT NULL DEFAULT FALSE,
     "duration" INTEGER NOT NULL,
     "url" TEXT NOT NULL,
 

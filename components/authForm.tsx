@@ -22,6 +22,11 @@ const AuthForm = ({ mode }) => {
     router.push("/");
   };
 
+  const handleSwitch = async (e) => {
+    e.preventDefault();
+    router.push(`${mode === "signin" ? "signup" : "signin"}`);
+  };
+
   return (
     <Box height="100vh" width="100vw" bg="black" color="white">
       <Flex
@@ -54,8 +59,21 @@ const AuthForm = ({ mode }) => {
                   bg: "green.300",
                 },
               }}
+              marginRight="20px"
             >
               {mode}
+            </Button>
+            <Button
+              type="button"
+              bg="green.500"
+              sx={{
+                "&:hover": {
+                  bg: "green.300",
+                },
+              }}
+              onClick={handleSwitch}
+            >
+              {mode === "signin" ? "signup" : "signin"}
             </Button>
           </form>
         </Box>

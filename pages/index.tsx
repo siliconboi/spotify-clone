@@ -10,7 +10,11 @@ const Home = ({ artists, playlistCount }) => {
   return (
     <GradientLayout
       color="red"
-      title={isLoading ? "User" : `${user.firstName} ${user.lastName}`}
+      title={
+        isLoading || user.firstName === ""
+          ? "User"
+          : `${user.firstName} ${user.lastName}`
+      }
       subtitle="profile"
       description={`${playlistCount} public playlists`}
       image="./user.png"
